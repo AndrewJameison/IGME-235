@@ -1,12 +1,12 @@
 h1 {
-    color: red;
+    color: #4A85B3;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border-bottom: 1px solid blue;
+    border-bottom: 1px solid #2F4858;
 }
 
 h2 {
     margin-left: 1rem;
-    color: orangered;
+    color: #4A85B3;
     font-family: sans-serif;
 }
 
@@ -18,7 +18,7 @@ blockquote {
 }
 
 body {
-    background-color: lightblue;
+    background-color: #86bbd8;
     font-family: 'Courier New', Courier, monospace;
 }
 
@@ -26,7 +26,20 @@ p {margin-left: 2rem;}
 
 .side {float:right; margin: 0 12px;}
 
-footer h2 {
-    font-family:'Times New Roman', Times, serif;
-    color: blue;
+footer h2 {font-family:'Times New Roman', Times, serif;}
+
+ul {background-color: #4A85B3;}
+
+main {
+    margin: 0 auto;
+    border: 1px solid black;
 }
+
+
+/* Needs work */
+a {text-decoration: none;}
+a:link, source {color: #2F4858;}
+a:visited, source {color: #A26CBB;}
+a:focus {color: #485B67;} 
+a:hover {color: #485B67;}
+a:active {color: #425F71;}
