@@ -1,0 +1,32 @@
+h1 {
+    color: red;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-bottom: 1px solid blue;
+}
+
+h2 {
+    margin-left: 1rem;
+    color: orangered;
+    font-family: sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {font-family: Oswald, sans-serif;} 
+
+blockquote {
+    background-color: lightgray;
+    padding: 1rem;
+}
+
+body {
+    background-color: lightblue;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+p {margin-left: 2rem;}
+
+.side {float:right; margin: 0 12px;}
+
+footer h2 {
+    font-family:'Times New Roman', Times, serif;
+    color: blue;
+}
