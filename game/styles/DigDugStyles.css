@@ -1,16 +1,17 @@
 h1 {
-    color: #4A85B3;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     border-bottom: 1px solid #2F4858;
 }
 
 h2 {
     margin-left: 1rem;
-    color: #4A85B3;
     font-family: sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {font-family: Oswald, sans-serif;} 
+h1, h2, h3, h4, h5, h6 {
+    color: #33658A;
+    font-family: Oswald, sans-serif;
+} 
 
 blockquote {
     background-color: lightgray;
@@ -18,28 +19,37 @@ blockquote {
 }
 
 body {
-    background-color: #86bbd8;
+    background-color: #33658A;
     font-family: 'Courier New', Courier, monospace;
 }
 
 p {margin-left: 2rem;}
 
-.side {float:right; margin: 0 12px;}
+.side {
+    float:right; 
+    margin: 0 12px;
+}
 
 footer h2 {font-family:'Times New Roman', Times, serif;}
 
-ul {background-color: #4A85B3;}
+ul {
+    background-color: #92c0da;
+    margin-left: 2rem;
+    width: 300px;
+}
 
-main {
+main, header, footer{
+    background-color: #86bbd8;
     margin: 0 auto;
+    width: 80%;
+    padding: 2rem;
     border: 1px solid black;
 }
 
-
-/* Needs work */
+/* Link Styles */
 a {text-decoration: none;}
-a:link, source {color: #2F4858;}
-a:visited, source {color: #A26CBB;}
-a:focus {color: #485B67;} 
-a:hover {color: #485B67;}
-a:active {color: #425F71;}
+a:link{color: #33658A;}a
+a:visited{color: #A26CBB;}
+a:focus{color: #485B67;} 
+a:hover{color: #485B67;}
+a:active{color: #425F71;}
