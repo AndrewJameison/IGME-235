@@ -1,0 +1,24 @@
+#wrapper { 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#condensedWebMap {
+    width: 800px;
+    height: auto;
+}
+
+#reference {
+    width: 30%;
+    height: auto;
+}
+
+p { 
+    border: 1px solid black;
+    padding: 1rem;
+    margin: 1rem;
+    width: 30%;
+    height: fit-content;
+    background-color: #dedede;
+}

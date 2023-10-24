@@ -1,0 +1,58 @@
+/* 2 ID Selectors + 2 Class Selectors */
+
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+header {background-color: #E2E8CE;}
+
+body {background-color: #123524;}
+
+main {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+    background-color: #E2E8CE;
+    padding: 5% 5%;
+}
+
+#bio{
+    border: 1.5px solid black;
+    display: flex;
+    box-sizing: border-box;
+    width: 500px;
+    height: 20%;
+    padding: 1em;
+    margin: 1em;
+    text-indent: 25px;
+    background-color: #ACBFA4;
+}
+
+ul {
+    width: 500px;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+li {
+    border: 1.5px solid black;
+    padding: 0.2em 1em;
+    border-radius: 1em;
+    background-color: #ACBFA4;
+}
+
+/* Link Styles */
+a {text-decoration: none;}
+a:link{color: #33658A;}a
+a:visited{color: #52528C;}
+a:focus{color: #485B67;} 
+a:hover{color: #485B67;}
+a:active{color: #425F71;}
+
+/* Uniform color scheme: 
+    #123524 Phalto Green,
+    #ACBFA4 Ash Gray,
+    #E2E8CE Beige,
+    #52528C Ultra Violet */
