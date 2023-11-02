@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robin Williams Quote Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <style>
+        /* styles for button hover, and active */
+        body {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            background-color: rgb(216, 122, 33);
+        }
+
+        button {
+            padding: 1rem;
+            width: 180px;
+
+            border: 2px solid black;
+            border-radius: 10px;
+            background-color: rgb(255, 207, 86);
+
+            position: relative;
+            top: -2rem;
+        }
+
+        button:hover { background-color: rgb(250, 200, 72); }
+
+        button:active { background-color: rgb(224, 169, 30); }
+
+        img {
+            border: 2px solid black;
+            max-width: 450px;
+            width: 80%;
+        }
+
+        p {
+            text-align: center;
+            font-family: "Anton";
+            font-style: italic;
+            font-size: larger;
+
+            color: white;
+
+            max-width: 450px;
+            width: 80%;
+            position: relative;
+            top: -100px;
+        }
+
+        h1 { 
+            text-align: center; 
+            font-family: "Anton";
+        }
+
+        
+    </style>
+</head>
+<body>
+<!-- Header -->
+    <!-- Robin Williams -->
+<h1>Wise Words From the Late Robin Williams</h1>
+
+<!-- changing content area, textbox -->
+<!-- <div id="content"> -->
+<img src="images/robinWilliams.webp" alt="Robin Williams Portrait"></img>
+<p id="textbox">Not loaded</p>
+<!-- </div> -->
+
+<!-- Button to call another random phrase -->
+<button>New Quote</button>
+
+<!-- Misc -->
+    <!-- Name  -->
+    <!-- embedded font -->
+    <!-- some responsive behavior -->
+
+<script>
+"use strict";
+
+let textbox = document.querySelector("p[id='textbox']");
+
+let button = document.querySelector("button");
+
+// Array containing 5 phrases
+let phraseArray = ["Sometimes, you got to specifically go out of your way to get into trouble. It's called fun.",
+                    "You've got to be crazy! It's too late to be sane, too late. You've got to go full-tilt bozo.",
+                    "You're only given a little spark of madness. You mustn't lose it.",
+                    "Do you think God gets stoned? I think so… look at the platypus.",
+                    "The things we fear the most have already happened to us."];
+
+let displayQuote = (e) => {
+    textbox.innerHTML = '"' + phraseArray[Math.floor(Math.random() * phraseArray.length)] + '"';
+}
+
+window.onload = displayQuote;
+
+button.onclick = displayQuote;
+
+</script>
+</body>
+</html>

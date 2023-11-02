@@ -1,73 +1,71 @@
 html { scroll-behavior: smooth; }
 
-#wrapper, #navBar, .newGame { border: 1px solid black }
+body { 
+    margin: 0;
+    background-color: hsl(225, 20%, 16%);
+    z-index: -2;
+}
 
 #wrapper {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
+    color: #E3E3E3;
 }
 
-/* Drop down menu */
+header {
+    width: 100%;
+    background-color: rgb(31, 30, 35);
+    justify-content: center;
+    border-bottom: 3px solid black;
+}
+
+/* navigation bar*/
 ul.menu { 
     list-style: none;
-    margin: 0;
-    padding: 0;
+    margin: 1rem;
+    padding: 0.5rem;
     width: 100%;
 
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-}
-
-/* .menu a {
-    display: block;
-    background: gray;
-    padding: 10px;
-    color: white;
-    text-decoration: none;
-    transition: transform 0.1s ease-in, background-color 0.3s linear;;
-} 
-
-ul.menu ul li {
-    width:100%;
     justify-content: center;
 }
 
-ul.menu ul {
-    display: none;
+a:visited {
+    color: rgb(168, 168, 168);
 }
 
-ul.menu li:hover ul {
-    display: flex;
-    justify-content: center;
+li {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border: 2px solid black;
+    border-radius: 0.3rem;
+    background-color: rgb(18, 45, 104);
 }
 
-.menu a:hover {
-	background: red;
-	color: yellow;
-    transform: scale(1.1);
-}
-
-/* Submenu actions 
-.menu .submenu li>a {
-    background: red;
-    color: yellow;
-}
-.menu .submenu>a:after {
-    padding-left: 5px;
-} */
+li:focus, li:hover { border: 2px solid rgb(0, 69, 219); }
 
 /* Content Blocks */
-.left { text-align: right; }
+.left { 
+    text-align: right; 
+    border-bottom-left-radius: 4rem;
+}
 
-.right { text-align: left; }
+.right { 
+    text-align: left; 
+    border-bottom-right-radius: 4rem;
+}
 
 .newGame {
+    position: relative;
     max-width: 40%;
-    padding: 0.25rem 1rem 0.25rem 1rem;
+    padding: 1rem;
     margin: 0.25rem 1rem 0.25rem 1rem;
+
+    border: 2px solid black;
+    background-color: rgb(18, 45, 104);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: small;
 }
@@ -79,13 +77,8 @@ ul.menu li:hover ul {
     color: #ffbf4a;
 }
 
-.related, .related .nameDate {
-    color: #de2766;
-}
-
 h1, h2 {
     height: fit-content;
-    color: #341f5b;
 }
 
 h1 {
@@ -101,49 +94,71 @@ h2 {
 
 /* Graphics */
 #timeline {
-    top: 7rem;
-    height: 150%;
+    position: absolute;
+    height: 200%;
+    width: 5%;
+    background-color:#341f5b;
+    border: 2px solid black;
+    left: 47.5%;
+    z-index: -1;
 }
 
-#bag {
-    height: 12%;
-    top: 22rem;
+#minecraft {
+    height: 70px;
+    top: 0.2rem;
+    right: 9rem;
+}
+
+#csgo {
+    height: 150px;
+    top: -3rem;
+    left: 10rem;
+}
+
+#overwatch {
+    height: 70px;
+    top: 0.2rem;
+    left: 9rem;
+}
+
+#dayz {
+    height: 120px;
+    top: -1rem;
+    right: 9rem;
+}
+
+#pubg {
+    height: 60px;
+    top: 0.5rem;
+    right: 12rem;
+}
+
+#fortnite {
+    height: 140px;
+    top: -2rem;
+    right: 8rem;
+}
+
+#fallguys {
+    height: 70px;
+    top: 0.5rem;
     left: 8rem;
 }
 
-#balloon {
-    top: 1.5rem;
-    left: 1.5rem;
-}
-
-#bird {
-    top: 2rem;
-    right: 1.5rem;
-}
-
-#hammer {
-    height: 10%;
-    top: 35rem;
-    right: 15rem;
-}
-
-#hands {
-    height: 8%;
-    bottom: -10rem;
-    left: 15rem;
+#amongus {
+    height: 65px;
+    top: 0.5rem;
+    left: 10rem;
 }
 
 img { 
     position: absolute;
-    height: 15%;
-    z-index: -1;
-    
-    opacity: 0.5;
+    width: auto;
+    opacity: 0.8;
 }
 
 /* Sidebars: Blocks and Circles */
-
-span.sidebar{
+span.sidebar {
     shape-outside: margin-box;
     width: 20%;
     padding: 0rem 0.5rem 0rem 0.5rem;
@@ -152,18 +167,35 @@ span.sidebar{
 
 .right div span.sidebar {
     float: right;
-    border-left: 2px dotted #341f5b;
+    border-left: 3.5px dotted black;
 }
 
 .left div span.sidebar{
     float: left;
-    border-right: 2px dotted #341f5b;
+    border-right: 3.5px dotted black;
 }
 
+@media screen and (max-width: 1024px) {
+    #wrapper {
+        justify-content: right;
+    }
 
-/* 
-Colors:
-#ffbf4a yellow
-#de2766 pink
-#341f5b purple
-*/
+    #timeline {
+        left: 0;
+    }
+
+    .newGame {
+        text-align: left;
+        max-width: 80%;
+        border-bottom-right-radius: 4rem;
+        border-bottom-left-radius: 0rem;
+    }
+
+    .right div span.sidebar, .left div span.sidebar {
+        float: right;
+        text-align: left;
+        border-left: 2px dotted #341f5b;
+        border-right: none;
+    }
+
+}
