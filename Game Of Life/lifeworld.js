@@ -51,21 +51,18 @@ const lifeworld = {
 
         for (let r = -1; r < 2; r++)
         {
-            if (this.world[row + r][col] == undefined) { continue; }
+            if (this.world[row + r] == undefined) { continue; }
 
             for (let c = -1; c < 2; c++)
             {
-                if (this.world[row][col + c] == undefined) { continue; }
+                if (this.world[row + r][col + c] == undefined) { continue; }
 
                 let cell = this.world[row + r][col + c];
 
-                if (cell > 0 && (r != 0 && c != 0))
-                {
-                    sum++
-                }
+                if (cell > 0 && (r != 0 && c != 0)) { sum++; }
             }
         }
-        
+
         return sum;
 	},
 	
