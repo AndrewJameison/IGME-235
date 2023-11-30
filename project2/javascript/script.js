@@ -7,9 +7,7 @@ let offsetValue = 0;
 const prefix = "arj5881-";
 const favoritesKey = prefix + "favorites";
 
-localStorage.clear(); // REMOVE LATER - TESTING ONLY
-
-let localArray = localStorage.getItem(favoritesKey);
+let localArray = JSON.parse(localStorage.getItem(favoritesKey));
 
 // create a key using the prefix
 // create an array object using data from the local storage
@@ -124,11 +122,10 @@ function displayTrending() {
 
 
 function checkFavorites(e) {
-    let item = "<div class='result'>" + e.target.parentNode.innerHTML + "</div>";
+    let item = "<div class='result'>" + e.target.parentNode.parentNode.parentNode.innerHTML + "</div>";
 
     if (localArray.length == 0)
     {
-        console.log("added to empty array");
         localArray.push(item);
     }
 
@@ -138,26 +135,21 @@ function checkFavorites(e) {
         {
             if (item == localArray[i])
             {
-                console.log("removed from array");
                 localArray.splice(i, 1);
                 break;
             }
 
             else if (i == localArray.length - 1)
             {
-                console.log("new gif added to favorites");
                 localArray.push(item);
-
-                // Need to break because array is now one larger, will cycle through again and remove it
-                break;
+                break; // array is now larger, need to break before next loop
             }
         }
     }
-
-    localStorage.setItem(favoritesKey, localArray);
+    localStorage.setItem(favoritesKey, JSON.stringify(localArray));
 }
 
-function grabGIF(e) {
+function grabGIF() {
     console.log("file has been downloaded! Or maybe copied to clipboard...");
 }
 
@@ -208,7 +200,7 @@ function dataLoaded(e) {
 
     if (!obj.data || obj.data.length == 0)
     {
-        document.querySelector("#status").innerHTML = "<b>No results found for '" + displayTerm + "'</b>";
+        document.querySelector("#content").innerHTML = "No results found..."
         return;
     }
 
@@ -227,18 +219,11 @@ function dataLoaded(e) {
             imgURL = "images/notFoundIMG.png";
         }
 
-        // Each image should display a little star on the button, and if a favorite, fill in the star
-        // empty star: &#9734;
-        // filled star: &#9733;
-        // empty arrow: &#8681
-        // either make the font larger, or get an image
-
-        // Rating: ${result.rating.toUpperCase()}<br>
-
-        let line = `<div class='result'><img src='${imgURL}' title='${result.id}'/><br>`;
-        line += `<a target='_blank' href='${result.url}'><button type="button">Source</button></a>`;
-        line += `<button type="button" class="favorite">&#9734</button>`;
-        line += `<button type="button" class="download">&#8681</button></div>`;
+        let line = `<div class='result'><img src='${imgURL}' title='${result.id}' class='GIF'/><div class='underGIF'>`;
+        line += `<p class='rating'>Rated: ${result.rating.toUpperCase()}</p>`;
+        line += `<a target='_blank' href='${result.url}' class='sourceChunk'><button type="button" class='source'>Source</button></a>`;
+        line += `<button type="button" class="favorite"><img src='images/emptyStar.png' /></button>`;
+        line += `<a href='' download='${result.id}' class='sourceChunk'><button type="button" class="download"><img src='images/download.png' /></button></a></div></div>`;
 
         bigString += line;
     }
@@ -256,6 +241,6 @@ function dataLoaded(e) {
     }
 }
 
-function dataError(e) {
+function dataError() {
     console.log("An error occured");
 }

@@ -1,7 +1,18 @@
-header h1{
-    margin:0;
-    text-align:center;
-    font-size:100px;
+body {
+    background-color: grey;
+}
+
+header {
+    margin: 1rem;
+    padding: 1rem;
+    background-color: rgb(1, 76, 122);
+    border: 3px solid black;
+}
+
+header h1 {
+    margin: 0;
+    text-align: center;
+    font-size: 100px;
     padding-top: 35px;
 }
 
@@ -17,13 +28,105 @@ header h1{
     max-width: fit-content;
 }
 
+
+
+.result {
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+}
+
+.result img.GIF{
+    border: 3px solid black;
+    border-radius: 10px;
+}
+
+.result .underGIF {
+    display: flex;
+    flex-flow: row;
+    margin: 5px 0;
+}
+
+.result .underGIF .rating {
+    background-color: rgb(0, 90, 195);
+    border: 1.5px solid black;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding: 0 0.5rem;
+    margin: 1px auto 0 0;
+    text-align: center;
+    height: fit-content;
+    width: auto;
+}
+
+.result button {
+    background-color: rgb(0, 120, 195);
+    border: 1.5px solid black;
+    height: 30px;
+    border-radius: 3px;
+}
+
+.result .underGIF .sourceChunk {
+    height: 30px;
+    width: fit-content;
+    margin: 1px;
+}
+
+.result button.source {
+    width: 100%;
+}
+
+.result button.favorite {
+    width: fit-content;
+    margin: 1px;
+}
+
+.result button.download {
+    width: fit-content;
+    margin: 1px;
+}
+
+    .result button:focus, .result button:hover {
+        background-color: rgb(0, 104, 168);
+        border: 1.5px solid rgb(20, 20, 20);
+    }
+
+    .result button:active {
+        background-color: rgb(0, 75, 121);
+    }
+
+.result .underGIF button img {
+    width: 20px;
+    height: 20px;
+}
+
+
+
 /* columns should shrink from 5 - 3 - 1 based on screen width */
 #content {
+    margin: 1rem;
     display: grid;
     grid-template-columns: repeat(5, minmax(200px, 1fr));
+    align-items: baseline;
     gap: 40px 20px;
 }
 
-@media screen and (max-width: 1024px) {
-    
+@media screen and (max-width: 1085px) {
+    header h1 {
+        font-size: 70px;
+    }
+
+    #content {
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
+    }
+}
+
+@media screen and (max-width: 640px) {
+    header h1 {
+        font-size: 50px;
+    }
+
+    #content {
+        grid-template-columns: minmax(200px, 1fr);
+    }
 }

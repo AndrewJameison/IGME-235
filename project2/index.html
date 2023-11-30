@@ -3,65 +3,63 @@
 <head>
 	<meta charset="utf-8" />
  	<title>GIF-Finder</title>
-	<link rel="stylesheet" href="css/styles.css"></link>
+	<link rel="stylesheet" href="css/styles.css" />
 	<script src="javascript/script.js"></script>
 
 </head>
 <body>
 <header>
 	<h1>The Best Darn GIF-Finder There Ever Was&trade;</h1>
+
+	<div id="searchBox">
+		<div class="widgets">
+			<button type="button" id="previous" class="">&#11114</button>
+		</div>
+
+		<div class="widgets">
+			<select id="limit">
+				<option value="5">5</option>
+				<option value="10">10</option>
+				<option value="25">25</option>
+				<option value="50">50</option>
+			</select>
+		</div>
+
+	<!-- Replace the Rating: text as an "option" or the default, it won't filter any ratings-->
+		<div class="widgets">
+			<select id="rating">
+				<option value="none" selected>Rating</option>
+				<option value="g">G</option>
+				<option value="pg">PG</option>
+				<option value="pg-13">PG-13</option>
+				<option value="r">R</option>
+			</select>
+		</div>
+
+		<div class="widgets">
+			<input id="searchterm" type="text" size="20" maxlength="20" autofocus value="cats" />
+		</div>
+
+		<div class="widgets">
+			<button type="button" id="search">Go!</button>
+		</div>
+		
+		<div class="widgets">
+			<button type="button" id="favorites">Favorites</button>
+		</div>
+
+		<div class="widgets">
+			<button type="button" id="trend">Trending</button>
+		</div>
+
+		<div class="widgets">
+			<button type="button" id="next">&#11116</button>
+		</div>
+	</div>
 </header>
+<!-- Still need a status bar -->
 
-<div id="searchBox">
-	<div class="widgets">
-		<button type="button" id="previous" class=""><--</button>
-	</div>
-
-	<div class="widgets">
-		<select id="limit">
-			<option value="5">5</option>
-			<option value="10">10</option>
-			<option value="25">25</option>
-			<option value="50">50</option>
-			<option value="100">100</option>
-		</select>
-	</div>
-
-<!-- Replace the Rating: text as an "option" or the default, it won't filter any ratings-->
-	<div class="widgets">
-		<select id="rating">
-			<option value="none" selected>Rating</option>
-			<option value="g">G</option>
-			<option value="pg">PG</option>
-			<option value="pg-13">PG-13</option>
-			<option value="r">R</option>
-		</select>
-	</div>
-
-	<div class="widgets">
-		<input id="searchterm" type="text" size="20" maxlength="20" autofocus value="cats" />
-	</div>
-
-	<div class="widgets">
-		<button type="button" id="search">Go!</button>
-	</div>
-	
-	<div class="widgets">
-		<button type="button" id="favorites">Favorites</button>
-	</div>
-
-	<div class="widgets">
-		<button type="button" id="trend">Trending</button>
-	</div>
-
-	<div class="widgets">
-		<button type="button" id="next">--></button>
-	</div>
-</div>
-
-<div id="content">
-	<p>No data yet!</p>
-</div>
+<div id="content"></div>
 
 </body>
 </html>
