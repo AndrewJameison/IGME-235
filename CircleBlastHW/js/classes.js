@@ -8,33 +8,68 @@ class Ship extends PIXI.Sprite {
     }
 }
 
-class Circle extends PIXI.Graphics {
-    constructor(radius, color=0xFF0000, x = 0, y = 0) {
-        super();
-        this.beginFill(color);
-        this.drawCircle(0, 0, radius);
-        this.endFill();
-        this.x = x;
-        this.y = y;
-        this.radius = radius;
+class Circle extends PIXI.Graphics{
+	constructor(radius, color=0xFF0000, x=0, y=0){
+		super();
+		this.beginFill(color);
+		this.drawCircle(0,0,radius);
+		this.endFill();
+		this.x = x;
+		this.y = y;
+		this.radius = radius;
 
-        // variables
-        this.fwd = getRandomUnitVector();
-        this.speed = 50;
-        this.isAlive = true;
+		// variables
+		this.fwd = getRandomUnitVector();
+		this.speed = 50;
+		this.isAlive = true;
+	}
+	
+	// abstract method - declared, but no implementation
+	activate(){
+	  
+	}
+	
+	// public methods to be called from main.js
+	move(dt=1/60){
+		this.x += this.fwd.x * this.speed * dt;
+		this.y += this.fwd.y * this.speed * dt;
+	}
+	
+	reflectX(sceneWidth){
+		this.fwd.x *= -1;
+	}
+	
+	reflectY(sceneHeight){
+		this.fwd.y *= -1;
+	}
+	
+	// protected methods
+	_wrapX(sceneWidth){
+		if (this.fwd.x < 0 && this.x < 0 - this.radius){
+			this.x = sceneWidth + this.radius;
+		}
+		if(this.fwd.x > 0 && this.x > sceneWidth + this.radius){
+			this.x = 0 -  this.radius;
+		}
+	}
+	
+	_wrapY(sceneHeight){
+		if (this.fwd.y < 0 && this.y < 0 - this.radius){
+			this.y = sceneHeight + this.radius;
+		}
+		if(this.fwd.y > 0 && this.y > sceneHeight + this.radius){
+			this.y = 0 - this.radius;
+		}
+	}
+}
+
+class WrappingCircle extends Circle {
+    reflectX(sceneWidth) {
+        this._wrapX(sceneWidth);
     }
 
-    move(dt = 1 / 60) {
-        this.x += this.fwd.x * this.speed * dt;
-        this.y += this.fwd.y * this.speed * dt;
-    }
-
-    reflectX() {
-        this.fwd.x *= -1;
-    }
-
-    reflectY() {
-        this.fwd.y *= -1;
+    reflectY(sceneHeight) {
+        this._wrapY(sceneHeight);
     }
 }
 

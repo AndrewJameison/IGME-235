@@ -12,14 +12,14 @@ const sceneWidth = app.view.width;
 const sceneHeight = app.view.height;	
 
 // pre-load the images (this code works with PIXI v6)
-app.loader.
-    add([
-        "images/spaceship.png",
-        "images/explosions.png"
-    ]);
-app.loader.onProgress.add(e => { console.log(`progress=${e.progress}`) });
-app.loader.onComplete.add(setup);
-app.loader.load();
+// app.loader.
+//     add([
+//         "images/spaceship.png",
+//         "images/explosions.png"
+//     ]);
+// app.loader.onProgress.add(e => { console.log(`progress=${e.progress}`) });
+// app.loader.onComplete.add(setup);
+// app.loader.load();
 
 // pre-load the images (this code works with PIXI v7)
 // let assets;
@@ -109,15 +109,15 @@ function createLabelsAndButtons() {
 	// Setting up start scene
 	let buttonStyle = new PIXI.TextStyle({
 		fill: 0xFF0000,
-		fontSize: 48,
-		fontFamily: "Futura"
+		fontSize: 20,
+		fontFamily: "Press Start 2P"
 	});
 
 	let startLabel1 = new PIXI.Text("Circle Blast!");
 	startLabel1.style = new PIXI.TextStyle({
 		fill: 0xFFFFFF,
-		fontSize: 96,
-		fontFamily: "Futura",
+		fontSize: 40,
+		fontFamily: "Press Start 2P",
 		stroke: 0xFF0000,
 		strokeThickness: 6
 	});
@@ -128,8 +128,8 @@ function createLabelsAndButtons() {
 	let startLabel2 = new PIXI.Text("R U worthy..?");
 	startLabel2.style = new PIXI.TextStyle({
 		fill: 0xFFFFFF,
-		fontSize: 32,
-		fontFamily: "Futura",
+		fontSize: 20,
+		fontFamily: "Press Start 2P",
 		fontStyle: "italic",
 		stroke: 0xFF0000,
 		strokeThickness: 6
@@ -153,7 +153,7 @@ function createLabelsAndButtons() {
 	let textStyle= new PIXI.TextStyle({
 		fill: 0xFFFFFF,
 		fontSize: 18,
-		fontFamily: "Futura",
+		fontFamily: "Press Start 2P",
 		stroke: 0xFF0000,
 		strokeThickness: 4
 	});
@@ -173,11 +173,11 @@ function createLabelsAndButtons() {
 	decreaseLifeBy(0);
 
 	// Setting up the game over scene
-	let gameOverText = new PIXI.Text("Game Over!\n        :-O");
+	let gameOverText = new PIXI.Text("Game Over! :-O");
 	textStyle = new PIXI.TextStyle({
 		fill: 0xFFFFFF,
-		fontSize: 64,
-		fontFamily: "Futura",
+		fontSize: 30,
+		fontFamily: "Press Start 2P",
 		stroke: 0xFF0000,
 		strokeThickness: 6
 	});
@@ -189,21 +189,21 @@ function createLabelsAndButtons() {
 	gameOverScoreLabel = new PIXI.Text("Your final score: " + score);
 	textStyle = new PIXI.TextStyle({
 		fill: 0xFFFFFF,
-		fontSize: 32,
-		fontFamily: "Futura",
+		fontSize: 20,
+		fontFamily: "Press Start 2P",
 		fontStyle: "italic",
 		stroke: 0xFF0000,
 		strokeThickness: 6
 	});
 	gameOverScoreLabel.style = textStyle;
-	gameOverScoreLabel.x = 140;
+	gameOverScoreLabel.x = 130;
 	gameOverScoreLabel.y = sceneHeight / 2;
 	gameOverScene.addChild(gameOverScoreLabel);
 
 	// "play again?" button
 	let playAgainButton = new PIXI.Text("Play Again?");
 	playAgainButton.style = buttonStyle;
-	playAgainButton.x = 150;
+	playAgainButton.x = 200;
 	playAgainButton.y = sceneHeight - 100;
 	playAgainButton.interactive = true;
 	playAgainButton.buttonMode = true;
@@ -265,13 +265,13 @@ function gameLoop(){
 		c.move(dt);
 		if (c.x <= c.radius || c.x >= sceneWidth - c.radius)
 		{
-			c.reflectX();
+			c.reflectX(sceneWidth);
 			c.move(dt);
 		}
 
 		if (c.y <= c.radius || c.y >= sceneHeight - c.radius)
 		{
-			c.reflectY();
+			c.reflectY(sceneHeight);
 			c.move(dt);
 		}
 	}
@@ -327,13 +327,39 @@ function gameLoop(){
 }
 
 function createCircles(numCircles) {
-	for (let i = 0; i < numCircles; i++) {
+	for (let i = 0; i < numCircles / 4; i++) {
 		let c = new Circle(10, 0xFFFF00);
 		c.x = Math.random() * (sceneWidth - 50) + 25;
 		c.y = Math.random() * (sceneHeight - 400) + 25;
 		circles.push(c);
 		gameScene.addChild(c);
 	}
+
+	// Orthogonal Circles
+	for (let i = 0; i < numCircles / 4; i++) {
+		let c = new Circle(10, 0x00FFFF);
+		c.speed = Math.random() * 100 + 100
+
+		if (Math.random() < .5)
+		{
+			c.x = Math.random() * (sceneWidth - 5) + 25
+			c.y = Math.random() * 100 + c.radius;
+			c.fwd = {x:0, y: 1};
+		}
+
+		else
+		{
+			c.x = Math.random() * 25 + c.radius;
+			c.y = Math.random() * (sceneHeight - 80) - c.radius;
+			c.fwd = {x:1, y:0};
+		}
+
+		circles.push(c);
+		gameScene.addChild(c);
+	}
+
+	// Wrapping Circles
+
 }
 
 function loadLevel(){
